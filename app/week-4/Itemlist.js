@@ -3,16 +3,16 @@ import Items from "./Items.json";
 
 export default function ItemList() {
   return (
-    <>
+    <ul>
       {Items.map((item) => (
         <Item
-          id={item.id}
+          key={item.id}
           name={item.name}
           category={item.category}
           quantity={item.quantity}
         />
       ))}
-    </>
+    </ul>
   );
 }
 
