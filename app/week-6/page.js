@@ -13,10 +13,11 @@ export default function Page() {
   };
 
   return (
-    <main className="min-h-screen p-8 transition-colors min-h-screen flex flex-col items-center ">
+    <main >
       <h1 className="text-3xl font-bold mb-6 text-center">
         Shopping List
       </h1>
+      <NewItem onAddItem={handleAddItem} />
       <ItemList items={Items} />
     </main>
   );

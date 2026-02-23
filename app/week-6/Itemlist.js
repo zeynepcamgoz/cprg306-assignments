@@ -15,15 +15,23 @@ export default function ItemList({ items }) {
   })
   return (
     <div>
-      <div className="flex gap-3 mb-5">
+      <div>
         Sort by the:
         <button onClick={() => setSortBy("name")}
+          className={`px-4 py-2 rounded ml-2 mr-2 ${sortBy === "name"
+            ? "bg-green-700 text-white"
+            : "bg-red-700 text-white"
+            }`}
         > name
         </button>
         <button onClick={() => setSortBy("category")}
+          className={`px-4 py-2 rounded ${sortBy === "category"
+            ? "bg-green-700 text-white"
+            : "bg-red-700 text-white "
+            }`}
         > category
         </button>
-      </div>
+      </div >
       <ul>
         {sortItem.map((item) => (
           <Item
@@ -34,7 +42,7 @@ export default function ItemList({ items }) {
           />
         ))}
       </ul>
-    </div>
+    </div >
   );
 }
 
