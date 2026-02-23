@@ -33,17 +33,32 @@ export default function NewItem({ onAddItem }) {
     setCategory("Produce");
   };
 
+  const options = [
+    "Produce",
+    "Dairy",
+    "Bakery",
+    "Meat",
+    "Frozen Foods",
+    "Canned Goods",
+    "Dry Goods",
+    "Beverages",
+    "Snacks",
+    "Household",
+    "Other"
+  ]
+
   return (
-    <div className="flex items-center justify-center h-screen bg-pink-50">
+    <div className="flex items-center justify-center h-screen bg-white-50">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col bg-white p-8 w-full max-w-md rounded-2xl shadow-xl border border-pink-200 space-y-6"
       >
         <div className="flex flex-col">
-          <label className="text-pink-700 font-medium mb-1">
+          <label htmlFor="name" className="text-pink-700 font-medium mb-1">
             Name:
           </label>
           <input
+            id="name"
             type="text"
             value={name}
             onChange={updateName}
@@ -53,10 +68,11 @@ export default function NewItem({ onAddItem }) {
         </div>
         <div className="flex">
           <div className="flex flex-row mr-2">
-            <label className="text-pink-700 font-medium mb-1">
+            <label htmlFor="quantity" className="text-pink-700 font-medium mb-1">
               Quantity:
             </label>
             <input
+              id="quantity"
               type="number"
               min="1"
               max="99"
@@ -66,25 +82,20 @@ export default function NewItem({ onAddItem }) {
             />
           </div>
           <div className="flex flex-row">
-            <label className="text-pink-700 font-medium mb-1">
+            <label htmlFor="category" className="text-pink-700 font-medium mb-1">
               Category:
             </label>
             <select
+              id="category"
               value={category}
               onChange={updateCategory}
               className="border border-pink-300 rounded-md px-3 py-2 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition text-black"
             >
-              <option>Produce</option>
-              <option>Dairy</option>
-              <option>Bakery</option>
-              <option>Meat</option>
-              <option>Frozen Foods</option>
-              <option>Canned Goods</option>
-              <option>Dry Goods</option>
-              <option>Beverages</option>
-              <option>Snacks</option>
-              <option>Household</option>
-              <option>Other</option>
+              {options.map((optId) => (
+                <option key={optId} value={optId}>
+                  {optId}
+                </option>
+              ))}
             </select>
           </div>
         </div>
