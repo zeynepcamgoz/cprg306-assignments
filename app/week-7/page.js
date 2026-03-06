@@ -9,8 +9,9 @@ export default function Page() {
   const [items, setItems] = useState(Items);
 
   const handleAddItem = (newItem) => {
-    setItems((lastItem) => [...lastItem, newItem]);
+    setItems((prev) => [...prev, newItem]);
   };
+
 
   return (
     <main >

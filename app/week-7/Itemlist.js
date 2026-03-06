@@ -9,7 +9,7 @@ export default function ItemList({ items }) {
       return a.name.localeCompare(b.name)
     }
     else if (sortBy === "category") {
-      return a.category.localeCompare(b.name)
+      return a.category.localeCompare(b.category)
     }
     return 0;
   })

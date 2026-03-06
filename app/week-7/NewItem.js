@@ -2,35 +2,33 @@
 import { useState } from "react";
 
 export default function NewItem({ onAddItem }) {
-  const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [category, setCategory] = useState("produce");
+  const [item, setItem] = useState({
+    name: "",
+    quantity: 1,
+    category: "produce",
+  })
 
-  const updateName = (event) => {
-    setName(event.target.value);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setItem((prev) => ({ ...prev, [name]: value }));
   };
 
-  const updateQuantity = (event) => {
-    setQuantity(event.target.value);
-  };
-
-  const updateCategory = (event) => {
-    setCategory(event.target.value);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const submissionObject = {
+    const newItem = {
+      ...item,
       id: Math.random().toString(36).substring(2, 9),
-      name,
-      quantity,
-      category,
     };
-    onAddItem(submissionObject)
-    console.log(submissionObject);
-    setName("");
-    setQuantity(1);
-    setCategory("Produce");
+    onAddItem(newItem)
+    const initalState = {
+      name: "",
+      quantity: 1,
+      category: "produce"
+    }
+    setItem(initialState);
+    //
   };
 
   const options = [
@@ -59,9 +57,10 @@ export default function NewItem({ onAddItem }) {
           </label>
           <input
             id="name"
+            name="name"
             type="text"
-            value={name}
-            onChange={updateName}
+            value={item.name}
+            onChange={handleChange}
             required
             className="rounded-md border border-pink-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 p-2 outline-none transition text-black"
           />
@@ -73,11 +72,12 @@ export default function NewItem({ onAddItem }) {
             </label>
             <input
               id="quantity"
+              name="quantity"
               type="number"
               min="1"
               max="99"
-              value={quantity}
-              onChange={updateQuantity}
+              value={item.quantity}
+              onChange={handleChange}
               className="border border-pink-300 rounded-md px-3 py-2 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition text-black"
             />
           </div>
@@ -87,8 +87,9 @@ export default function NewItem({ onAddItem }) {
             </label>
             <select
               id="category"
-              value={category}
-              onChange={updateCategory}
+              name="category"
+              value={item.category}
+              onChange={handleChange}
               className="border border-pink-300 rounded-md px-3 py-2 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition text-black"
             >
               {options.map((optId) => (
