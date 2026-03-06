@@ -19,17 +19,12 @@ export default function NewItem({ onAddItem }) {
     event.preventDefault();
     const newItem = {
       ...item,
-      id: Math.random().toString(36).substring(2, 9),
-    };
-    onAddItem(newItem)
-    const initalState = {
-      name: "",
-      quantity: 1,
-      category: "produce"
+      id: Math.random().toString(36).substring(2, 9)
     }
+    onAddItem(newItem);
+    const initialState = { name: "", quantity: 1, category: "produce" };
     setItem(initialState);
-    //
-  };
+  }
 
   const options = [
     "Produce",
