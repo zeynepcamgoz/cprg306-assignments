@@ -1,12 +1,11 @@
 'use client'
 import { useState } from "react";
-import Items from "./Items.json"
+import itemsData from "./Items.json"
 import NewItem from "./NewItem";
-import Item from "./Item";
 import ItemList from "./Itemlist";
 
 export default function Page() {
-  const [items, setItems] = useState(Items);
+  const [items, setItems] = useState(itemsData);
 
   const handleAddItem = (newItem) => {
     setItems((prev) => [...prev, newItem]);

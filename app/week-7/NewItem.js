@@ -41,7 +41,7 @@ export default function NewItem({ onAddItem }) {
   ]
 
   return (
-    <div className="flex items-center justify-center h-screen bg-white-50">
+    <div className="flex items-center justify-center bg-white-50">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col bg-white p-8 w-full max-w-md rounded-2xl shadow-xl border border-pink-200 space-y-6"
