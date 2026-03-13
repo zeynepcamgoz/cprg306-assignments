@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-// Function to fetch meal ideas from the API
+
 async function fetchMealIdeas(ingredient) {
   const response = await fetch(
     `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`
@@ -15,13 +15,13 @@ async function fetchMealIdeas(ingredient) {
 export default function MealIdeas({ ingredient }) {
   const [meals, setMeals] = useState([]);
 
-  // Function to load meals
+
   const loadMealIdeas = async () => {
     const mealIdeas = await fetchMealIdeas(ingredient);
     setMeals(mealIdeas);
   };
 
-  // Run whenever ingredient changes
+
   useEffect(() => {
     if (ingredient) {
       loadMealIdeas();
@@ -29,16 +29,23 @@ export default function MealIdeas({ ingredient }) {
   }, [ingredient]);
 
   return (
-    <div>
-      <h2>Meal Ideas</h2>
+    <div className="border border-gray-300 rounded-xl p-5 mt-5 bg-white shadow-md max-w-md">
+      <h2 className="text-xl font-semibold mb-3 dark:text-black">Meal Ideas</h2>
 
-      <ul>
-        {meals.map((meal) => (
-          <li key={meal.idMeal}>
-            {meal.strMeal}
-          </li>
-        ))}
-      </ul>
+      {meals.length === 0 ? (
+        <p className="text-gray-500 dark:text-black">No meal found</p>
+      ) : (
+        <ul className="space-y-2">
+          {meals.map((meal) => (
+            <li
+              key={meal.idMeal}
+              className="bg-gray-100 px-3 py-2 rounded-md hover:bg-gray-200 transition dark:text-black"
+            >
+              {meal.strMeal}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
