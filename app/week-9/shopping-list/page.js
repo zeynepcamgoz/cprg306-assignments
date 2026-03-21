@@ -5,6 +5,7 @@ import itemsData from "./Items.json";
 import NewItem from "./NewItem";
 import ItemList from "./Itemlist";
 import MealIdeas from "./MealIdeas";
+import { useUserAuth } from "../../contexts/AuthContext";
 
 export default function Page() {
   const [items, setItems] = useState(itemsData);
@@ -25,6 +26,17 @@ export default function Page() {
 
     setSelectedItemName(cleanedName);
   };
+
+  const { user } = useUserAuth();
+
+  if (!user) {
+    return (
+      <h1 className="flex items-center justify-center min-h-screen">
+        You are not signed in!
+      </h1>
+    );
+  }
+
 
   return (
     <main className="p-10">
