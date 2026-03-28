@@ -4,12 +4,12 @@ import Link from "next/link";
 import { useUserAuth } from "../contexts/AuthContext";
 
 export default function Dashboard() {
-  const auth = useUserAuth();
-  const currentUser = auth.user;
+  const { user, gitHubSignIn, firebaseSignOut } = useUserAuth()
+  const currentUser = user;
 
   async function signInWithGitHub() {
     try {
-      await auth.gitHubSignIn();
+      await gitHubSignIn();
     } catch (e) {
       console.error("Login failed:", e);
     }
@@ -17,7 +17,7 @@ export default function Dashboard() {
 
   async function signOutUser() {
     try {
-      await auth.firebaseSignOut();
+      await firebaseSignOut();
     } catch (e) {
       console.error("Logout failed:", e);
     }

@@ -51,9 +51,19 @@ export default function Page() {
 
   if (!user) {
     return (
-      <h1 className="flex items-center justify-center min-h-screen">
-        You are not signed in!
-      </h1>
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <h1>
+          You are not signed in!
+        </h1>
+        <div>
+          <Link
+            href="/week-10"
+            className="underline text-black dark:text-white"
+          >
+            Back to User Menu
+          </Link>
+        </div>
+      </div>
     );
   }
 
