@@ -49,7 +49,7 @@ export default function Dashboard() {
             </button>
 
             <div className="mt-5">
-              <Link href="/week-9/shopping-list" className="underline">
+              <Link href="/week-10/shopping-list" className="underline">
                 View Your List →
               </Link>
             </div>
